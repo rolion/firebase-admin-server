@@ -5,6 +5,7 @@ const config = {
     host: process.env.HOST,
     https: process.env.HTTPS,
     firebase: {
+
         GoogleApplicationCredentials:process.env.GOOGLE_APPLICATION_CREDENTIALS,
         ApiKey:process.env.FIREBASE_API_KEY,
         AuthDomain:process.env.FIREBASE_AUTH_DOMAIN,
