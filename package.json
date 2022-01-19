@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app/index.js",
-    "dev": "nodemon ./app/index.js"
+    "test": "jest",
+    "start": "node app/server.js",
+    "dev": "nodemon ./app/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^9.1.4",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

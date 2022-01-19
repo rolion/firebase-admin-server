@@ -4,7 +4,6 @@ const User = require('../../dto/v1/user');
 const USER_ROLES = ['user', 'admin', 'superadmin'];
 
 getUserList = async (nextPageToken)=>{
-    try {
         let result = [];
         listUsersResult = await appFirebase.auth().listUsers(1000, nextPageToken);
         listUsersResult.users.forEach((userRecord) => {
@@ -23,9 +22,6 @@ getUserList = async (nextPageToken)=>{
             result= result.concat(await getUserList(listUsersResult.pageToken));
         }
         return result;
-    }catch (e) {
-        console.log(e);
-    }
 }
 
 validateUserToken = async  (token, uid) => {

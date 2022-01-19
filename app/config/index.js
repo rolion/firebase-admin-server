@@ -16,3 +16,4 @@ const config = {
         MeasurementId:process.env.FIREBASE_MEASUREMENT_ID
     }
 }
+module.exports = { config }

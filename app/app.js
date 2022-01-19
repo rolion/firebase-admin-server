@@ -1,7 +1,8 @@
 const express = require('express');
 var bodyParser = require('body-parser')
 var cors = require('cors');
-const port = 3000;
+const { logErrors, wrapError, errorHandler } = require('./middleware/v1/errorHandler.middleware');
+
 
 
 
@@ -16,12 +17,15 @@ app.use(cors());
 
 
 const authRouter = require("./routes/v1/authRoutes");
+app.get('/', (req, res, next)=>{
+	res.status(200);
+})
 app.use('/auth', authRouter);
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+//manejadores de errores
+app.use(logErrors);
+app.use(wrapError);
+app.use(errorHandler);
 
-app.listen(port, () => {
 
-})
+module.exports = app;
