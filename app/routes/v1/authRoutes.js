@@ -10,7 +10,7 @@ const {getUserList, addClaims, getUserClaims, updateUserStatus} = require("../..
 
 router.get("/list",
     isFirebaseTokenValid,
-    tokenHasClaim('admin'),
+    tokenHasClaim('superadmin'),
     async (req, res, next)=>{
        try{
            let result = await getUserList();
@@ -22,7 +22,7 @@ router.get("/list",
 
 router.put('/user-status/:uid/:status',
     isFirebaseTokenValid,
-    tokenHasClaim('admin'),
+    tokenHasClaim('superadmin'),
     async (req, res, next)=>{
     try{
         const {status, uid} = req.params;
@@ -35,7 +35,7 @@ router.put('/user-status/:uid/:status',
 
 router.post('/add-claims',
     isFirebaseTokenValid,
-    tokenHasClaim('admin'),
+    tokenHasClaim('superadmin'),
     async (req, res, next)=>{
     try{
         const {uid, roles} =  req.body;
@@ -51,7 +51,7 @@ router.post('/add-claims',
 });
 router.get('/user-claims/:uid',
     isFirebaseTokenValid,
-    tokenHasClaim('admin'),
+    tokenHasClaim('superadmin'),
     async (req, res, next) =>{
    try{
        let uid = req.params.uid;

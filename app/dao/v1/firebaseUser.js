@@ -29,14 +29,10 @@ validateUserToken = async  (token, uid) => {
     return decodeToken.uid == uid;
 }
 addClaims = async (uid, roles)=>{
-
     let user = await appFirebase.auth().getUser(uid);
     if(user && roles){
         let result = await appFirebase.auth().setCustomUserClaims(uid, roles);
     }
-}
-function convertToClaimObject(rolesArray){
-    return rolesArray.reduce((acc,curr) => ({...acc, [curr]:true}), {});
 }
 
 getUserClaims = async (uid) => {
